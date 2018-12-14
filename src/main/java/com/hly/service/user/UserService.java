@@ -26,4 +26,9 @@ public interface UserService {
 	void delete(String string);
 	
 	User selectByPrimaryKey(String id);
+    
+	int redis();
+
+	
+	
 }

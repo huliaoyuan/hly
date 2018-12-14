@@ -3,16 +3,20 @@ package com.hly.service.user.impl;
 
 import java.util.List;
 
+import javax.annotation.Resource;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.CachePut;
 import org.springframework.cache.annotation.Cacheable;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.hly.mapper.UserMapper;
 import com.hly.model.User;
+import com.hly.redis.RedisUtil;
 import com.hly.service.user.UserService;
 
 /**
@@ -23,6 +27,11 @@ public class UserServiceImpl implements UserService {
 
     @Autowired
     private UserMapper userMapper;
+    @Autowired
+    private RedisUtil redisUtil;
+    @Resource
+	private RedisTemplate<String, Object> redisTemplate;
+
    
     /**
      * 新增
@@ -91,6 +100,43 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public int addUser(User user) {
 		// TODO Auto-generated method stub
+		return 0;
+	}
+
+
+	@Override
+	public int redis() {
+		List<User> list=userMapper.select(new User());
+		/**
+		 * 单个操作
+		 */
+		/*for (User user : list) {
+			redisUtil.set(user.getUserid(), user);
+		}		
+		User user=(User) redisUtil.get("2");
+		System.out.println(user.toString());
+		System.out.println("缓存过期时间："+redisUtil.getExpire("2"));*/
+				
+	    /**
+	     * list操作 整个list作为一条记录
+	     */
+		//redisUtil.lSet("userlist", list);
+		
+	/**
+	 * 存储map
+	 */
+	//	Map<String,Object> map=new HashMap<>();
+		//map.put("11", "压缩");
+	//	map.put("22", "凯");
+	//	map.put("33", "后裔");
+	//	redisUtil.sSet("hashmaptest", map);
+	//	redisUtil.
+	//	
+	//set操作	
+	//redisTemplate.opsForSet().add("settest",1);
+    redisTemplate.opsForZSet().add("ZSettest","德玛西亚",21321);
+		
+		
 		return 0;
 	}
 

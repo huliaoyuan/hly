@@ -40,4 +40,13 @@ public class User {
     public void setPhone(String phone) {
         this.phone = phone == null ? null : phone.trim();
     }
+
+	@Override
+	public String toString() {
+		return "User [userid=" + userid + ", username=" + username + ", password=" + password + ", phone=" + phone
+				+ ", getUserid()=" + getUserid() + ", getUsername()=" + getUsername() + ", getPassword()="
+				+ getPassword() + ", getPhone()=" + getPhone() + ", getClass()=" + getClass() + ", hashCode()="
+				+ hashCode() + ", toString()=" + super.toString() + "]";
+	}
+    
 }

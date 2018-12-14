@@ -34,8 +34,26 @@ public class UserController {
     	System.out.println();
         return 1;
     }
+    /**
+     * 
+     * 
+     * @return
+     */
+    @ResponseBody
+    @RequestMapping(value = "/redis")
+    public int redis(){
+    	User user=new User();
+    	user.setUserid(StringUtils.UUID());
+    	user.setPassword("123");   	
+    	userService.redis();
+    	System.out.println();
+        return 1;
+    }
     
-   
+    
+    
+    
+    
     
     @ResponseBody
     @RequestMapping("/delete")
