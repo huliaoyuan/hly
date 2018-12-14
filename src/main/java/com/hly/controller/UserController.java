@@ -31,6 +31,7 @@ public class UserController {
     	user.setUserid(StringUtils.UUID());
     	user.setPassword("123");   	
     	userService.addUser1(user);
+    	System.out.println();
         return 1;
     }
     
