@@ -6,9 +6,10 @@
     <result column="username" jdbcType="VARCHAR" property="username" />
     <result column="password" jdbcType="VARCHAR" property="password" />
     <result column="phone" jdbcType="VARCHAR" property="phone" />
+    <result column="classid" jdbcType="VARCHAR" property="classid" />
   </resultMap>
   <sql id="Base_Column_List">
-    userid, username, password, phone
+    userid, username, password, phone, classid
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
     select 
@@ -22,9 +23,9 @@
   </delete>
   <insert id="insert" parameterType="com.hly.model.User">
     insert into t_user (userid, username, password, 
-      phone)
+      phone, classid)
     values (#{userid,jdbcType=VARCHAR}, #{username,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, 
-      #{phone,jdbcType=VARCHAR})
+      #{phone,jdbcType=VARCHAR}, #{classid,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.hly.model.User">
     insert into t_user
@@ -41,6 +42,9 @@
       <if test="phone != null">
         phone,
       </if>
+      <if test="classid != null">
+        classid,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="userid != null">
@@ -54,6 +58,9 @@
       </if>
       <if test="phone != null">
         #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="classid != null">
+        #{classid,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -69,6 +76,9 @@
       <if test="phone != null">
         phone = #{phone,jdbcType=VARCHAR},
       </if>
+      <if test="classid != null">
+        classid = #{classid,jdbcType=VARCHAR},
+      </if>
     </set>
     where userid = #{userid,jdbcType=VARCHAR}
   </update>
@@ -76,7 +86,8 @@
     update t_user
     set username = #{username,jdbcType=VARCHAR},
       password = #{password,jdbcType=VARCHAR},
-      phone = #{phone,jdbcType=VARCHAR}
+      phone = #{phone,jdbcType=VARCHAR},
+      classid = #{classid,jdbcType=VARCHAR}
     where userid = #{userid,jdbcType=VARCHAR}
   </update>
    <select id="select" parameterType="com.hly.model.User" resultMap="BaseResultMap">
@@ -96,6 +107,12 @@
         phone=#{phone,jdbcType=VARCHAR}
       </if>   
   </select>
+  <select id="selectPage1" parameterType="Map" resultType="java.util.HashMap">
+       select t1.userid,t1.username,t2.name
+       from t_user t1,t_class t2 where t1.classid=t2.id
+       and t2.id=#{classid,jdbcType=VARCHAR}  
+  </select>
+  
   
   
 </mapper>

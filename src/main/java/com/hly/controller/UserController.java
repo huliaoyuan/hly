@@ -2,6 +2,8 @@ package com.hly.controller;
 
 
 
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -9,6 +11,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.github.pagehelper.PageInfo;
 import com.hly.model.User;
 import com.hly.service.user.UserService;
 import com.hly.utils.StringUtils;
@@ -98,6 +101,14 @@ public class UserController {
     	model.addAttribute("users",userService.findAllUser(pageNum, pageSize)) ;          
          return "/user/list";
     }
+    @RequestMapping("/page1/{pageNum}/{pageSize}")
+    @ResponseBody
+    public PageInfo<Map<String, Object>> list1(@PathVariable("pageNum") int pageNum, @PathVariable("pageSize") int pageSize,Model model){    	  
+         return userService.selectPage1(pageNum, pageSize);
+    }
+    
+    
+    
     
 }
 

@@ -3,6 +3,7 @@ package com.hly.service.user;
 
 
 import java.util.List;
+import java.util.Map;
 
 import com.github.pagehelper.PageInfo;
 import com.hly.model.User;
@@ -28,6 +29,8 @@ public interface UserService {
 	User selectByPrimaryKey(String id);
     
 	int redis();
+	
+	PageInfo<Map<String,Object>> selectPage1(int pageNum, int pageSize);
 
 	
 	

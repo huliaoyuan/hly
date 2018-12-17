@@ -1,7 +1,9 @@
 package com.hly.service.user.impl;
 
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.Resource;
 
@@ -140,5 +142,24 @@ public class UserServiceImpl implements UserService {
 		return 0;
 	}
 
+
+	@Override
+	public PageInfo<Map<String, Object>> selectPage1(int pageNum, int pageSize) {
+		 PageHelper.startPage(pageNum, pageSize);
+    	 User user=new User();
+    	 user.setPassword("123");
+    	 Map<String ,Object> map=new HashMap<>();
+    	 map.put("classid","11");
+    	 List<Map<String,Object>> appsList = userMapper.selectPage1(map);
+    	 PageInfo<Map<String, Object>> appsPageInfo = new PageInfo<>(appsList);   
+    	 for(int i=0;i<appsList.size();i++){
+    		 Map<String,Object> pserson=appsList.get(i);
+    		 System.out.println(pserson.get("username")+"--"+pserson.get("name"));
+    	 }
+		 return  appsPageInfo;
+		
+	}
+
+	
 	
 }
