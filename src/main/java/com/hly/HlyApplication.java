@@ -11,7 +11,8 @@ import org.springframework.cache.annotation.EnableCaching;
 public class HlyApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(HlyApplication.class, args);
+		SpringApplication.run(HlyApplication.class, args);	
+		//分支测试1
 	}
 }
 
