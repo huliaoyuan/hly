@@ -1,4 +1,4 @@
-package com.hly.service.user.impl;
+package com.hly.service.impl;
 
 
 import java.util.HashMap;
@@ -18,14 +18,12 @@ import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.hly.mapper.UserMapper;
 import com.hly.model.User;
-import com.hly.redis.RedisUtil;
-import com.hly.service.user.UserService;
-
+import com.hly.utils.RedisUtil;
 /**
  * Created by Administrator on 2017/8/16.
  */
-@Service(value = "userService")
-public class UserServiceImpl implements UserService {
+@Service
+public class UserServiceImpl implements com.hly.service.UserService {
 
     @Autowired
     private UserMapper userMapper;

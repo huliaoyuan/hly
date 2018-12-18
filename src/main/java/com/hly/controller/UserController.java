@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.github.pagehelper.PageInfo;
 import com.hly.model.User;
-import com.hly.service.user.UserService;
+import com.hly.service.UserService;
 import com.hly.utils.StringUtils;
 
 /**
@@ -31,7 +31,7 @@ public class UserController {
     @RequestMapping(value = "/add")
     public int addUser(){
     	User user=new User();
-    	user.setUserid(StringUtils.UUID());
+    	user.setId(StringUtils.UUID());
     	user.setPassword("123");   	
     	userService.addUser1(user);
     	System.out.println();
@@ -46,7 +46,7 @@ public class UserController {
     @RequestMapping(value = "/redis")
     public int redis(){
     	User user=new User();
-    	user.setUserid(StringUtils.UUID());
+    	user.setId(StringUtils.UUID());
     	user.setPassword("123");   	
     	userService.redis();
     	System.out.println();
@@ -68,7 +68,7 @@ public class UserController {
     @RequestMapping("/update")
     public String update(String id){
     	User user=new User();
-    	user.setUserid(id);
+    	user.setId(id);
     	user.setUsername("盖伦啊啊啊1");
     	user.setPassword("80082088201");   	
     	userService.updateByPrimaryKeySelective(user);

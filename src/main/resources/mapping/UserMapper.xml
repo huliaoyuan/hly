@@ -2,36 +2,72 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.hly.mapper.UserMapper">
   <resultMap id="BaseResultMap" type="com.hly.model.User">
-    <id column="userid" jdbcType="VARCHAR" property="userid" />
+    <id column="id" jdbcType="VARCHAR" property="id" />
     <result column="username" jdbcType="VARCHAR" property="username" />
     <result column="password" jdbcType="VARCHAR" property="password" />
     <result column="phone" jdbcType="VARCHAR" property="phone" />
     <result column="classid" jdbcType="VARCHAR" property="classid" />
+    <result column="text1" jdbcType="VARCHAR" property="text1" />
+    <result column="text2" jdbcType="VARCHAR" property="text2" />
+    <result column="text3" jdbcType="VARCHAR" property="text3" />
+    <result column="text4" jdbcType="VARCHAR" property="text4" />
+    <result column="text5" jdbcType="VARCHAR" property="text5" />
+    <result column="text6" jdbcType="VARCHAR" property="text6" />
+    <result column="text7" jdbcType="VARCHAR" property="text7" />
+    <result column="text8" jdbcType="VARCHAR" property="text8" />
+    <result column="text9" jdbcType="VARCHAR" property="text9" />
+    <result column="text10" jdbcType="VARCHAR" property="text10" />
+    <result column="text11" jdbcType="VARCHAR" property="text11" />
+    <result column="text12" jdbcType="VARCHAR" property="text12" />
+    <result column="text13" jdbcType="VARCHAR" property="text13" />
+    <result column="text14" jdbcType="VARCHAR" property="text14" />
+    <result column="text15" jdbcType="VARCHAR" property="text15" />
+    <result column="text16" jdbcType="VARCHAR" property="text16" />
+    <result column="text17" jdbcType="VARCHAR" property="text17" />
+    <result column="text18" jdbcType="VARCHAR" property="text18" />
+    <result column="text19" jdbcType="VARCHAR" property="text19" />
+    <result column="text20" jdbcType="VARCHAR" property="text20" />
   </resultMap>
   <sql id="Base_Column_List">
-    userid, username, password, phone, classid
+    id, username, password, phone, classid, text1, text2, text3, text4, text5, text6, 
+    text7, text8, text9, text10, text11, text12, text13, text14, text15, text16, text17, 
+    text18, text19, text20
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
-    from t_user
-    where userid = #{userid,jdbcType=VARCHAR}
+    from user
+    where id = #{id,jdbcType=VARCHAR}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
-    delete from t_user
-    where userid = #{userid,jdbcType=VARCHAR}
+    delete from user
+    where id = #{id,jdbcType=VARCHAR}
   </delete>
   <insert id="insert" parameterType="com.hly.model.User">
-    insert into t_user (userid, username, password, 
-      phone, classid)
-    values (#{userid,jdbcType=VARCHAR}, #{username,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, 
-      #{phone,jdbcType=VARCHAR}, #{classid,jdbcType=VARCHAR})
+    insert into user (id, username, password, 
+      phone, classid, text1, 
+      text2, text3, text4, 
+      text5, text6, text7, 
+      text8, text9, text10, 
+      text11, text12, text13, 
+      text14, text15, text16, 
+      text17, text18, text19, 
+      text20)
+    values (#{id,jdbcType=VARCHAR}, #{username,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, 
+      #{phone,jdbcType=VARCHAR}, #{classid,jdbcType=VARCHAR}, #{text1,jdbcType=VARCHAR}, 
+      #{text2,jdbcType=VARCHAR}, #{text3,jdbcType=VARCHAR}, #{text4,jdbcType=VARCHAR}, 
+      #{text5,jdbcType=VARCHAR}, #{text6,jdbcType=VARCHAR}, #{text7,jdbcType=VARCHAR}, 
+      #{text8,jdbcType=VARCHAR}, #{text9,jdbcType=VARCHAR}, #{text10,jdbcType=VARCHAR}, 
+      #{text11,jdbcType=VARCHAR}, #{text12,jdbcType=VARCHAR}, #{text13,jdbcType=VARCHAR}, 
+      #{text14,jdbcType=VARCHAR}, #{text15,jdbcType=VARCHAR}, #{text16,jdbcType=VARCHAR}, 
+      #{text17,jdbcType=VARCHAR}, #{text18,jdbcType=VARCHAR}, #{text19,jdbcType=VARCHAR}, 
+      #{text20,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.hly.model.User">
-    insert into t_user
+    insert into user
     <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="userid != null">
-        userid,
+      <if test="id != null">
+        id,
       </if>
       <if test="username != null">
         username,
@@ -45,10 +81,70 @@
       <if test="classid != null">
         classid,
       </if>
+      <if test="text1 != null">
+        text1,
+      </if>
+      <if test="text2 != null">
+        text2,
+      </if>
+      <if test="text3 != null">
+        text3,
+      </if>
+      <if test="text4 != null">
+        text4,
+      </if>
+      <if test="text5 != null">
+        text5,
+      </if>
+      <if test="text6 != null">
+        text6,
+      </if>
+      <if test="text7 != null">
+        text7,
+      </if>
+      <if test="text8 != null">
+        text8,
+      </if>
+      <if test="text9 != null">
+        text9,
+      </if>
+      <if test="text10 != null">
+        text10,
+      </if>
+      <if test="text11 != null">
+        text11,
+      </if>
+      <if test="text12 != null">
+        text12,
+      </if>
+      <if test="text13 != null">
+        text13,
+      </if>
+      <if test="text14 != null">
+        text14,
+      </if>
+      <if test="text15 != null">
+        text15,
+      </if>
+      <if test="text16 != null">
+        text16,
+      </if>
+      <if test="text17 != null">
+        text17,
+      </if>
+      <if test="text18 != null">
+        text18,
+      </if>
+      <if test="text19 != null">
+        text19,
+      </if>
+      <if test="text20 != null">
+        text20,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="userid != null">
-        #{userid,jdbcType=VARCHAR},
+      <if test="id != null">
+        #{id,jdbcType=VARCHAR},
       </if>
       <if test="username != null">
         #{username,jdbcType=VARCHAR},
@@ -62,10 +158,70 @@
       <if test="classid != null">
         #{classid,jdbcType=VARCHAR},
       </if>
+      <if test="text1 != null">
+        #{text1,jdbcType=VARCHAR},
+      </if>
+      <if test="text2 != null">
+        #{text2,jdbcType=VARCHAR},
+      </if>
+      <if test="text3 != null">
+        #{text3,jdbcType=VARCHAR},
+      </if>
+      <if test="text4 != null">
+        #{text4,jdbcType=VARCHAR},
+      </if>
+      <if test="text5 != null">
+        #{text5,jdbcType=VARCHAR},
+      </if>
+      <if test="text6 != null">
+        #{text6,jdbcType=VARCHAR},
+      </if>
+      <if test="text7 != null">
+        #{text7,jdbcType=VARCHAR},
+      </if>
+      <if test="text8 != null">
+        #{text8,jdbcType=VARCHAR},
+      </if>
+      <if test="text9 != null">
+        #{text9,jdbcType=VARCHAR},
+      </if>
+      <if test="text10 != null">
+        #{text10,jdbcType=VARCHAR},
+      </if>
+      <if test="text11 != null">
+        #{text11,jdbcType=VARCHAR},
+      </if>
+      <if test="text12 != null">
+        #{text12,jdbcType=VARCHAR},
+      </if>
+      <if test="text13 != null">
+        #{text13,jdbcType=VARCHAR},
+      </if>
+      <if test="text14 != null">
+        #{text14,jdbcType=VARCHAR},
+      </if>
+      <if test="text15 != null">
+        #{text15,jdbcType=VARCHAR},
+      </if>
+      <if test="text16 != null">
+        #{text16,jdbcType=VARCHAR},
+      </if>
+      <if test="text17 != null">
+        #{text17,jdbcType=VARCHAR},
+      </if>
+      <if test="text18 != null">
+        #{text18,jdbcType=VARCHAR},
+      </if>
+      <if test="text19 != null">
+        #{text19,jdbcType=VARCHAR},
+      </if>
+      <if test="text20 != null">
+        #{text20,jdbcType=VARCHAR},
+      </if>
     </trim>
   </insert>
   <update id="updateByPrimaryKeySelective" parameterType="com.hly.model.User">
-    update t_user
+    update user
     <set>
       <if test="username != null">
         username = #{username,jdbcType=VARCHAR},
@@ -79,16 +235,96 @@
       <if test="classid != null">
         classid = #{classid,jdbcType=VARCHAR},
       </if>
+      <if test="text1 != null">
+        text1 = #{text1,jdbcType=VARCHAR},
+      </if>
+      <if test="text2 != null">
+        text2 = #{text2,jdbcType=VARCHAR},
+      </if>
+      <if test="text3 != null">
+        text3 = #{text3,jdbcType=VARCHAR},
+      </if>
+      <if test="text4 != null">
+        text4 = #{text4,jdbcType=VARCHAR},
+      </if>
+      <if test="text5 != null">
+        text5 = #{text5,jdbcType=VARCHAR},
+      </if>
+      <if test="text6 != null">
+        text6 = #{text6,jdbcType=VARCHAR},
+      </if>
+      <if test="text7 != null">
+        text7 = #{text7,jdbcType=VARCHAR},
+      </if>
+      <if test="text8 != null">
+        text8 = #{text8,jdbcType=VARCHAR},
+      </if>
+      <if test="text9 != null">
+        text9 = #{text9,jdbcType=VARCHAR},
+      </if>
+      <if test="text10 != null">
+        text10 = #{text10,jdbcType=VARCHAR},
+      </if>
+      <if test="text11 != null">
+        text11 = #{text11,jdbcType=VARCHAR},
+      </if>
+      <if test="text12 != null">
+        text12 = #{text12,jdbcType=VARCHAR},
+      </if>
+      <if test="text13 != null">
+        text13 = #{text13,jdbcType=VARCHAR},
+      </if>
+      <if test="text14 != null">
+        text14 = #{text14,jdbcType=VARCHAR},
+      </if>
+      <if test="text15 != null">
+        text15 = #{text15,jdbcType=VARCHAR},
+      </if>
+      <if test="text16 != null">
+        text16 = #{text16,jdbcType=VARCHAR},
+      </if>
+      <if test="text17 != null">
+        text17 = #{text17,jdbcType=VARCHAR},
+      </if>
+      <if test="text18 != null">
+        text18 = #{text18,jdbcType=VARCHAR},
+      </if>
+      <if test="text19 != null">
+        text19 = #{text19,jdbcType=VARCHAR},
+      </if>
+      <if test="text20 != null">
+        text20 = #{text20,jdbcType=VARCHAR},
+      </if>
     </set>
-    where userid = #{userid,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=VARCHAR}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.hly.model.User">
-    update t_user
+    update user
     set username = #{username,jdbcType=VARCHAR},
       password = #{password,jdbcType=VARCHAR},
       phone = #{phone,jdbcType=VARCHAR},
-      classid = #{classid,jdbcType=VARCHAR}
-    where userid = #{userid,jdbcType=VARCHAR}
+      classid = #{classid,jdbcType=VARCHAR},
+      text1 = #{text1,jdbcType=VARCHAR},
+      text2 = #{text2,jdbcType=VARCHAR},
+      text3 = #{text3,jdbcType=VARCHAR},
+      text4 = #{text4,jdbcType=VARCHAR},
+      text5 = #{text5,jdbcType=VARCHAR},
+      text6 = #{text6,jdbcType=VARCHAR},
+      text7 = #{text7,jdbcType=VARCHAR},
+      text8 = #{text8,jdbcType=VARCHAR},
+      text9 = #{text9,jdbcType=VARCHAR},
+      text10 = #{text10,jdbcType=VARCHAR},
+      text11 = #{text11,jdbcType=VARCHAR},
+      text12 = #{text12,jdbcType=VARCHAR},
+      text13 = #{text13,jdbcType=VARCHAR},
+      text14 = #{text14,jdbcType=VARCHAR},
+      text15 = #{text15,jdbcType=VARCHAR},
+      text16 = #{text16,jdbcType=VARCHAR},
+      text17 = #{text17,jdbcType=VARCHAR},
+      text18 = #{text18,jdbcType=VARCHAR},
+      text19 = #{text19,jdbcType=VARCHAR},
+      text20 = #{text20,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=VARCHAR}
   </update>
    <select id="select" parameterType="com.hly.model.User" resultMap="BaseResultMap">
     select 
@@ -112,7 +348,12 @@
        from t_user t1,t_class t2 where t1.classid=t2.id
        and t2.id=#{classid,jdbcType=VARCHAR}  
   </select>
-  
+   <select id="selectByName" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from user
+    where phone = #{phone,jdbcType=VARCHAR}
+  </select>
   
   
 </mapper>
