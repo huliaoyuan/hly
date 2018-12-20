@@ -16,9 +16,11 @@
 <body>
   <h2>用户列表</h2>
   <div>
-     <form action="">
-     
-     </form>
+     <form action="login" method="post">
+		用户名：<input type="text" name="username" /><br /> 密码：<input
+			type="password" name="password" /><br /> <input type="submit"
+			value="Submit" />
+	</form>
      <p th:text="${msg}">default message</p>
       <p th:text="${message}">default message</p>
      

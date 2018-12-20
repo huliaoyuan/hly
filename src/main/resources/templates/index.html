@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+xmlns:shiro="http://www.pollix.at/thymeleaf/shiro">
 
 <head>
 <meta charset="UTF-8" />
@@ -17,7 +18,8 @@
 <body>
   <h2>用户列表</h2>
   <div>
-    index页面
+    index页面 <!-- 输出当前用户信息，通常为登录帐号信息。 -->
+    <p>Hello, <shiro:principal/>,  how are you today?</p>
    </div>
 </body>
 </html>
