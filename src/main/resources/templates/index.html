@@ -19,7 +19,14 @@ xmlns:shiro="http://www.pollix.at/thymeleaf/shiro">
   <h2>用户列表</h2>
   <div>
     index页面 <!-- 输出当前用户信息，通常为登录帐号信息。 -->
-    <p>Hello, <shiro:principal/>,  how are you today?</p>
+    <p>Hello, <shiro:principal property="username" />, <shiro:principal property="phone" /> how are you today?</p>
+    <shiro:lacksPermission name="view">
+　        123
+　　</shiro:lacksPermission>
+    <shiro:hasPermission name="view">
+　        hasPermission
+　　</shiro:hasPermission>
+   <a href="logout" >登出</a>
    </div>
 </body>
 </html>

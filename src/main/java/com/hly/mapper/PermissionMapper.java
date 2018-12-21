@@ -1,5 +1,7 @@
 package com.hly.mapper;
 
+import java.util.List;
+
 import com.hly.model.Permission;
 
 public interface PermissionMapper {
@@ -14,4 +16,7 @@ public interface PermissionMapper {
     int updateByPrimaryKeySelective(Permission record);
 
     int updateByPrimaryKey(Permission record);
+
+	List<Permission> selectPermissionByRoleId(String id);
+    
 }

@@ -1,6 +1,6 @@
 package com.hly.config.shiro;
 
-import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
 
 import org.apache.shiro.cache.ehcache.EhCacheManager;
@@ -15,12 +15,14 @@ import at.pollux.thymeleaf.shiro.dialect.ShiroDialect;
 @Configuration
 public class ShiroConfiguration {
 
-    //将自己的验证方式加入容器
     @Bean
     public MyShiroRealm myShiroRealm() {
         MyShiroRealm myShiroRealm = new MyShiroRealm();
         return myShiroRealm;
     }
+  
+    
+    
     @Bean
     public ShiroDialect shiroDialect() {
        return new ShiroDialect();
@@ -51,18 +53,20 @@ public class ShiroConfiguration {
     public ShiroFilterFactoryBean shiroFilterFactoryBean(SecurityManager securityManager) {
         ShiroFilterFactoryBean shiroFilterFactoryBean = new ShiroFilterFactoryBean();
         shiroFilterFactoryBean.setSecurityManager(securityManager);
-        Map<String,String> map = new HashMap<String, String>();
-        //登出
-        map.put("/logout","logout");
+        
+        Map<String,String> map = new LinkedHashMap<String, String>();
+        System.out.println("123");
+        map.put("/test","anon");
         //对所有用户认证
         map.put("/**","authc");
-        //登录
+        shiroFilterFactoryBean.setFilterChainDefinitionMap(map);
+      //登录
         shiroFilterFactoryBean.setLoginUrl("/login");
         //首页
         shiroFilterFactoryBean.setSuccessUrl("/index");
         //错误页面，认证不通过跳转
-        shiroFilterFactoryBean.setUnauthorizedUrl("/error");
-        shiroFilterFactoryBean.setFilterChainDefinitionMap(map);
+       // shiroFilterFactoryBean.setUnauthorizedUrl("/error");
+        System.out.println("Shiro拦截器工厂类注入成功");
         return shiroFilterFactoryBean;
     }
 

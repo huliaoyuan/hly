@@ -3,11 +3,16 @@
 <mapper namespace="com.hly.mapper.RoleMapper">
   <resultMap id="BaseResultMap" type="com.hly.model.Role">
     <id column="id" jdbcType="VARCHAR" property="id" />
+    <result column="role" jdbcType="VARCHAR" property="role" />
     <result column="rolename" jdbcType="VARCHAR" property="rolename" />
-    <result column="userid" jdbcType="VARCHAR" property="userid" />
+    <result column="text1" jdbcType="VARCHAR" property="text1" />
+    <result column="text2" jdbcType="VARCHAR" property="text2" />
+    <result column="text3" jdbcType="VARCHAR" property="text3" />
+    <result column="text4" jdbcType="VARCHAR" property="text4" />
+    <result column="text5" jdbcType="VARCHAR" property="text5" />
   </resultMap>
   <sql id="Base_Column_List">
-    id, rolename, userid
+    id, role, rolename, text1, text2, text3, text4, text5
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
     select 
@@ -20,10 +25,12 @@
     where id = #{id,jdbcType=VARCHAR}
   </delete>
   <insert id="insert" parameterType="com.hly.model.Role">
-    insert into role (id, rolename, userid
-      )
-    values (#{id,jdbcType=VARCHAR}, #{rolename,jdbcType=VARCHAR}, #{userid,jdbcType=VARCHAR}
-      )
+    insert into role (id, role, rolename, 
+      text1, text2, text3, 
+      text4, text5)
+    values (#{id,jdbcType=VARCHAR}, #{role,jdbcType=VARCHAR}, #{rolename,jdbcType=VARCHAR}, 
+      #{text1,jdbcType=VARCHAR}, #{text2,jdbcType=VARCHAR}, #{text3,jdbcType=VARCHAR}, 
+      #{text4,jdbcType=VARCHAR}, #{text5,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.hly.model.Role">
     insert into role
@@ -31,50 +38,97 @@
       <if test="id != null">
         id,
       </if>
+      <if test="role != null">
+        role,
+      </if>
       <if test="rolename != null">
         rolename,
       </if>
-      <if test="userid != null">
-        userid,
+      <if test="text1 != null">
+        text1,
+      </if>
+      <if test="text2 != null">
+        text2,
+      </if>
+      <if test="text3 != null">
+        text3,
+      </if>
+      <if test="text4 != null">
+        text4,
+      </if>
+      <if test="text5 != null">
+        text5,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="id != null">
         #{id,jdbcType=VARCHAR},
       </if>
+      <if test="role != null">
+        #{role,jdbcType=VARCHAR},
+      </if>
       <if test="rolename != null">
         #{rolename,jdbcType=VARCHAR},
       </if>
-      <if test="userid != null">
-        #{userid,jdbcType=VARCHAR},
+      <if test="text1 != null">
+        #{text1,jdbcType=VARCHAR},
+      </if>
+      <if test="text2 != null">
+        #{text2,jdbcType=VARCHAR},
+      </if>
+      <if test="text3 != null">
+        #{text3,jdbcType=VARCHAR},
+      </if>
+      <if test="text4 != null">
+        #{text4,jdbcType=VARCHAR},
+      </if>
+      <if test="text5 != null">
+        #{text5,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
   <update id="updateByPrimaryKeySelective" parameterType="com.hly.model.Role">
     update role
     <set>
+      <if test="role != null">
+        role = #{role,jdbcType=VARCHAR},
+      </if>
       <if test="rolename != null">
         rolename = #{rolename,jdbcType=VARCHAR},
       </if>
-      <if test="userid != null">
-        userid = #{userid,jdbcType=VARCHAR},
+      <if test="text1 != null">
+        text1 = #{text1,jdbcType=VARCHAR},
+      </if>
+      <if test="text2 != null">
+        text2 = #{text2,jdbcType=VARCHAR},
+      </if>
+      <if test="text3 != null">
+        text3 = #{text3,jdbcType=VARCHAR},
+      </if>
+      <if test="text4 != null">
+        text4 = #{text4,jdbcType=VARCHAR},
+      </if>
+      <if test="text5 != null">
+        text5 = #{text5,jdbcType=VARCHAR},
       </if>
     </set>
     where id = #{id,jdbcType=VARCHAR}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.hly.model.Role">
     update role
-    set rolename = #{rolename,jdbcType=VARCHAR},
-      userid = #{userid,jdbcType=VARCHAR}
+    set role = #{role,jdbcType=VARCHAR},
+      rolename = #{rolename,jdbcType=VARCHAR},
+      text1 = #{text1,jdbcType=VARCHAR},
+      text2 = #{text2,jdbcType=VARCHAR},
+      text3 = #{text3,jdbcType=VARCHAR},
+      text4 = #{text4,jdbcType=VARCHAR},
+      text5 = #{text5,jdbcType=VARCHAR}
     where id = #{id,jdbcType=VARCHAR}
   </update>
-  <select id="selectByUserId" parameterType="java.lang.String" resultMap="BaseResultMap">
-    select 
-    <include refid="Base_Column_List" />
-    from role
-    where userid = #{userid,jdbcType=VARCHAR}
+  <select id="selectRoleByUserId" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select t1.* from  role t1,user_role t2,user t3
+    where t1.id=t2.roleid and t2.userid=t3.id and    
+     t3.id = #{userid,jdbcType=VARCHAR}
   </select>
-  
-  
   
 </mapper>

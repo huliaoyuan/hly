@@ -10,8 +10,11 @@ public interface LoginService {
 
 	User findByName(String name);
 
-	List<Role> selectByUserId(String id);
 
-	List<Permission> selectByRoleId(String id);
+	List<Permission> selectPermissionByRoleId(String id);
+
+	List<Role> selectRoleByUserId(String id);
+	
+	
      
 }

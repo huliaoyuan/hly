@@ -1,5 +1,7 @@
 package com.hly.mapper;
 
+import java.util.List;
+
 import com.hly.model.Role;
 
 public interface RoleMapper {
@@ -15,7 +17,7 @@ public interface RoleMapper {
 
     int updateByPrimaryKey(Role record);
     
-    Role  selectByUserId(String userid);
+    List<Role>  selectRoleByUserId(String userid);
     
     
     

@@ -24,27 +24,6 @@ public class MyShiroRealm extends AuthorizingRealm{
   @Autowired
   private LoginService loginService;
 
-  //角色权限和对应权限添加
-  @Override
-  protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principalCollection) {
-      //获取登录用户名
-      String name= (String) principalCollection.getPrimaryPrincipal();
-      //查询用户名称
-      User user = loginService.findByName(name);
-      List<Role>  roles=loginService.selectByUserId(user.getId());
-      //添加角色和权限
-      SimpleAuthorizationInfo simpleAuthorizationInfo = new SimpleAuthorizationInfo();
-      for (Role role:roles) {
-          //添加角色
-          simpleAuthorizationInfo.addRole(role.getRolename());
-          List<Permission>  permissions=loginService.selectByRoleId(role.getId());
-          for (Permission permission:permissions) {
-              //添加权限
-              simpleAuthorizationInfo.addStringPermission(permission.getPermission());
-          }
-      }
-      return simpleAuthorizationInfo;
-  }
 
   //用户认证
   @Override
@@ -61,10 +40,61 @@ public class MyShiroRealm extends AuthorizingRealm{
           return null;
       } else {
           //这里验证authenticationToken和simpleAuthenticationInfo的信息
-          SimpleAuthenticationInfo simpleAuthenticationInfo = new SimpleAuthenticationInfo(name, user.getPassword().toString(), getName());
+          SimpleAuthenticationInfo simpleAuthenticationInfo = new SimpleAuthenticationInfo(user, user.getPassword().toString(), getName());
           return simpleAuthenticationInfo;
       }
   }
+  
+  
+  //角色权限和对应权限添加
+  @Override
+  protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principalCollection) {
+      SimpleAuthorizationInfo simpleAuthorizationInfo = new SimpleAuthorizationInfo();
+      principalCollection.getPrimaryPrincipal();
+      //获取登录用户名
+      User user= (User)principalCollection.getPrimaryPrincipal();
+	    List<Role>  roles=loginService.selectRoleByUserId(user.getId());
+	     for (Role role:roles) {
+	    	 System.out.println("-----------"+role.getRolename());
+	    	 simpleAuthorizationInfo.addRole(role.getRole());
+     
+      List<Permission>  permissions=loginService.selectPermissionByRoleId(role.getId());
+      for (Permission permission:permissions) {
+      	System.out.println("-----------"+permission.getPermission());
+      	simpleAuthorizationInfo.addStringPermission(permission.getPermission());
+         
+      }
+  }
+	     
+      
+      //获取登录用户名
+     // String name= (String) principalCollection.getPrimaryPrincipal();
+    //  //查询用户名称
+    //  User user = loginService.findByName(name);
+    //  List<Role>  roles=loginService.selectByUserId(user.getId());
+    //  //添加角色和权限
+     /* simpleAuthorizationInfo.addRole("view");
+      simpleAuthorizationInfo.addStringPermission("view");*/
+
+     /* for (Role role:roles) {
+          //添加角色
+          simpleAuthorizationInfo.addRole(role.getRolename());
+          List<Permission>  permissions=loginService.selectByRoleId(role.getId());
+          for (Permission permission:permissions) {
+              //添加权限
+              simpleAuthorizationInfo.addStringPermission(permission.getPermission());
+          }
+      }*/
+      return simpleAuthorizationInfo;
+  }
+  
+  
+  
+  
+
+  
+   
+  
   
 }
 
