@@ -3,7 +3,6 @@ package com.hly.config.shiro;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
-import org.apache.shiro.cache.ehcache.EhCacheManager;
 import org.apache.shiro.mgt.SecurityManager;
 import org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor;
 import org.apache.shiro.spring.web.ShiroFilterFactoryBean;
@@ -27,24 +26,24 @@ public class ShiroConfiguration {
     public ShiroDialect shiroDialect() {
        return new ShiroDialect();
     }
-    /*
+  /*  
 	 * shiro缓存管理器;
 	 * 需要注入对应的其它的实体类中-->安全管理器：securityManager可见securityManager是整个shiro的核心；
-	 */
+	 
 	@Bean
 	public EhCacheManager ehCacheManager() {
 		System.out.println("ShiroConfiguration.getEhCacheManager()");
 		EhCacheManager cacheManager = new EhCacheManager();
 		cacheManager.setCacheManagerConfigFile("classpath:ehcache.xml");
 		return cacheManager;
-	}
+	}*/
 
     //权限管理，配置主要是Realm的管理认证
     @Bean
     public SecurityManager securityManager() {
         DefaultWebSecurityManager securityManager = new DefaultWebSecurityManager();
         securityManager.setRealm(myShiroRealm());
-        securityManager.setCacheManager(ehCacheManager());
+       // securityManager.setCacheManager(ehCacheManager());
         return securityManager;
     }
 

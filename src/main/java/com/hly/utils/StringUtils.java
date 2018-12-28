@@ -2,7 +2,7 @@ package com.hly.utils;
 import java.util.UUID;
 
 /**
- * Created By Donghua.Chen on  2018/1/9
+ *
  */
 public class StringUtils {
 
