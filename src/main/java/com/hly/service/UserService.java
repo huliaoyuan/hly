@@ -31,7 +31,8 @@ public interface UserService {
 	int redis();
 	
 	PageInfo<Map<String,Object>> selectPage1(int pageNum, int pageSize);
-
+    
+	public PageInfo<User> findAllUser(int pageNum, int pageSize,User user);
 	
 	
 }

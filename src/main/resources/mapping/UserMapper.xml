@@ -329,10 +329,7 @@
    <select id="select" parameterType="com.hly.model.User" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
-       from t_user where 1=1    
-    <if test="userid != null">
-       and userid = #{userid,jdbcType=VARCHAR}
-    </if>
+       from user where 1=1    
     <if test="username != null">
        and  username=#{username,jdbcType=VARCHAR}
     </if>

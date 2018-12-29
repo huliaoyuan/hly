@@ -37,7 +37,7 @@ public class UserServiceImpl implements com.hly.service.UserService {
      * 新增
      * 
      */
-   @CachePut(value = "usercache", key = "#user.userid")
+   @CachePut(value = "usercache", key = "#user.id")
    public User addUser1(User user) {
    	   System.out.println(userMapper.insert(user));
        return user;
@@ -58,7 +58,7 @@ public class UserServiceImpl implements com.hly.service.UserService {
      * 更新
      * 
      */
-    @CachePut(value = "usercache", key = "#user.userid")
+    @CachePut(value = "usercache", key = "#user.id")
     @Override
 	public User updateByPrimaryKeySelective(User user) {
     	userMapper.updateByPrimaryKeySelective(user);
@@ -72,7 +72,6 @@ public class UserServiceImpl implements com.hly.service.UserService {
     * pageNum 开始页数
     * pageSize 每页显示的数据条数
     * */
-    @Cacheable
     public List<User> findAllUser(int pageNum, int pageSize) {
     	 PageHelper.startPage(pageNum, pageSize);
     	 User user=new User();
@@ -81,6 +80,21 @@ public class UserServiceImpl implements com.hly.service.UserService {
     	 PageInfo<User> appsPageInfo = new PageInfo<>(appsList);
          return appsPageInfo.getList();
     }
+    
+    /*
+     * 这个方法中用到了我们开头配置依赖的分页插件pagehelper
+     * 很简单，只需要在service层传入参数，然后将参数传递给一个插件的一个静态方法即可；
+     * pageNum 开始页数
+     * pageSize 每页显示的数据条数
+     * */
+     @Override
+     public PageInfo<User> findAllUser(int pageNum, int pageSize,User user) {
+     	 PageHelper.startPage(pageNum, pageSize);
+     	 List<User> appsList = userMapper.select(user);     	 
+     	 PageInfo<User> pageInfo = new PageInfo<>(appsList);
+          return pageInfo;
+     }
+    
 
 	@Override
 	public PageInfo<User> findPage(int pageNum, int pageSize) {
@@ -100,7 +114,7 @@ public class UserServiceImpl implements com.hly.service.UserService {
 	@Override
 	public int addUser(User user) {
 		// TODO Auto-generated method stub
-		return 0;
+		return userMapper.insert(user);
 	}
 
 

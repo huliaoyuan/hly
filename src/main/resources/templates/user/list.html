@@ -3,28 +3,106 @@
 <head>
 <meta charset="UTF-8" />
 <title>Insert title here</title>
-<script>
- function aler(){
-	 
-	  alert("213231");
-	 
- }
-</script>
+<style>
+table td {
+	text-align: center;
+}
+
+table th {
+	text-align: center;
+}
+</style>
+
 </head>
-<body>
-  <h2>用户列表</h2>
-  <div>
-     <ul>     
-         <li  th:each="user:${users}">
-              <span th:text="${user.userId}"></span>-
-             <span th:text="${user.userName}"></span>-
-             <span th:text="${user.password}"></span>-
-             <span th:text="${user.phone}"></span>
-         </li>
-          <button type="button" onclick="aler()" >Click Me!</button>
-     </ul>
-   </div>
-</body>
+<section class="content-header">
+	<h1>用户列表</h1>
+	<ol class="breadcrumb">
+		<li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+		<li><a href="#">Tables</a></li>
+		<li class="active">Data tables</li>
+	</ol>
+</section>
+<section class="content">
+	<div class="row">
+		<div class="col-xs-12">
+			<div class="box">
+				<div class="box-header">
+					<button type="button" class="btn btn-block btn-primary"
+						style="float: left; width: 150px;"
+						onclick="add('/test/add')"  >新增</button>
+					<div class="input-group input-group-sm"
+						style="width: 150px; float: right">
+						<input type="text" name="username" id="username"
+							value="" class="form-control pull-right"
+							placeholder="用户名">
+						<div class="input-group-btn">
+							<button type="button" onclick="search()" class="btn btn-default">
+								<i class="fa fa-search"></i>
+							</button>
+						</div>
+					</div>
+				</div>
+				<div class="box-body">
+					<div id="example2_wrapper"
+						class="dataTables_wrapper form-inline dt-bootstrap">
+						<div class="row">
+							<div class="col-sm-6"></div>
+							<div class="col-sm-6"></div>
+						</div>
+						<div class="row">
+							<div class="col-sm-12">
+								<table class="table table-bordered table-hover dataTable">
+									<thead>
+										<tr>
+											<th width="10%"><input align="center" name="checkAll"
+												id="checkAll" type="checkbox" value=""></th>
+											<th width="10%">名字</th>
+											<th width="10%">状态</th>
+											<th width="30%">描述</th>
+											<th width="20%">创建时间</th>
+											<th width="20%">操作</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr th:each="user:${userList}">
+											<td><input type="checkbox" name="checkList"
+												th:value="${user.id}"></td>
+											<td th:text="${user.id}"></td>
+											<td th:text="${user.username}"></td>
+											<td th:text="${user.password}"></td>
+											<td th:text="${user.phone}"></td>
+											<td><a style="text-decoration: none" href="#"
+												class="ml-5" th:onclick="|edit('${user.id}','/test/edit')|">编辑</a>
+												<a style="text-decoration: none" href="#" class="ml-5"
+												th:onclick="|show('${user.id}','/test/show')|">查看</a>
+												<a style="text-decoration: none" href="#" class="ml-5"
+												th:onclick="|del('${user.id}','/test/delete','/test/getList')|">删除</a>
+											</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-sm-5">
+								<div class="dataTables_info" id="" role="status"
+									aria-live="polite" th:text="|共计${total}条|"></div>
+							</div>
+							<div class="col-sm-7">
+								<div class="dataTables_paginate paging_simple_numbers"
+									id="example2_paginate" th:utext="${html}"></div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+<script th:src="@{/statics/js/list.js}"></script>
+
+
+
 </html>
 
 

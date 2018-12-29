@@ -56,8 +56,11 @@ public class ShiroConfiguration {
         Map<String,String> map = new LinkedHashMap<String, String>();
         System.out.println("123");
         map.put("/test","anon");
+        //springboot默认static文件夹下所有文件发布到web上，所有自建文件夹作为静态资源供shiro过滤
+        map.put("/statics/**", "anon");
         //对所有用户认证
         map.put("/**","authc");
+        
         shiroFilterFactoryBean.setFilterChainDefinitionMap(map);
       //登录
         shiroFilterFactoryBean.setLoginUrl("/login");

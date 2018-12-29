@@ -2,16 +2,22 @@ package com.hly.controller;
 
 
 
+import java.util.HashMap;
 import java.util.Map;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.github.pagehelper.PageInfo;
+import com.hly.framwork.Pagination;
 import com.hly.model.User;
 import com.hly.service.UserService;
 import com.hly.utils.StringUtils;
@@ -27,6 +33,8 @@ public class UserController {
     @Autowired
     private UserService userService;
 
+    
+    
     @ResponseBody
     @RequestMapping(value = "/add")
     public int addUser(){
@@ -37,6 +45,16 @@ public class UserController {
     	System.out.println();
         return 1;
     }
+    
+    
+    @GetMapping(value = "/add")
+    public String add(){
+    
+        return "/user/add";
+    }
+    
+    
+    
     /**
      * 
      * 
@@ -81,6 +99,37 @@ public class UserController {
     	userService.selectByPrimaryKey(id);
         return "123";
     }
+    
+    @RequestMapping(value="/getList")
+	public  String getList(HttpServletRequest request,HttpServletResponse response,Model model)throws Exception
+	{    	
+    	    	    	
+    	  String pageNo=request.getParameter("pageNo")==null?"1":request.getParameter("pageNo");
+    	  Map<String,String> filterMap=new HashMap<String, String>(); 
+          String username=request.getParameter("username");
+          if(!org.springframework.util.StringUtils.isEmpty(username))
+          filterMap.put("username",username);
+       /*   Page<User> page=userService.getPage(filterMap,Integer.valueOf(pageNo),10);
+          List<UserDTO> list=new ArrayList<UserDTO>();
+          for (User user :page.getResult() ) {
+		   UserDTO UserDTO=new UserDTO().transfer(user);
+		   list.add(UserDTO);
+           }    */
+          
+          PageInfo<User> pageInfo=userService.findAllUser(Integer.valueOf(pageNo),10,new User());
+          
+          
+    	  model.addAttribute("userList", pageInfo.getList());
+    	  model.addAttribute("html", Pagination.getHtml(pageInfo.getPageNum(),pageInfo.getPageSize(),pageInfo.getTotal()));
+    	  model.addAttribute("total", pageInfo.getTotal());
+    	  model.addAttribute("username",username);
+
+    	  System.out.println(); 
+    	  return "user/list";    
+		
+	}
+    
+    
     
     @ResponseBody
     @RequestMapping(value = "/all/{pageNum}/{pageSize}", produces = {"application/json;charset=UTF-8"})
