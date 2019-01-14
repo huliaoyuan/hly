@@ -1,0 +1,132 @@
+<%@page import="com.alibaba.fastjson.JSONArray"%>
+<%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<c:set var="path" value="<%=request.getContextPath()%>" />
+
+
+<%
+	JSONArray initialPreview = (JSONArray) request
+			.getAttribute("initialPreview");
+	JSONArray initialPreviewConfig = (JSONArray) request
+			.getAttribute("initialPreviewConfig");
+	System.out.println(initialPreviewConfig);
+%>
+<html>
+<head>
+<script>
+     
+          $(function(){
+             
+              $("#state").val('${user.state}');
+          
+          })
+           </script>
+
+</head>
+<section class="content-header">
+	<h1>用户新增</h1>
+	<ol class="breadcrumb">
+		<li><a href="#"><i class="fa fa-dashboard"></i> Home</a>
+		</li>
+		<li><a href="#">Tables</a>
+		</li>
+		<li class="active">Data tables</li>
+	</ol>
+</section>
+<section class="content">
+	<div class="row">
+		<!-- left column -->
+		<div class="col-md-12">
+			<!-- general form elements -->
+			<div class=" box box-success">
+				<div class="box-header with-border">
+					<h3 class="box-title">用户信息</h3>
+				</div>
+				<!-- /.box-header -->
+				<!-- form start -->
+				<form role="form" id="submitForm" action="${path}/test/updateUser"
+					ret="${path}/test/getList">
+					<input type="hidden" id="id" name="id" value="${user.id}" />
+					<div class="box-body">
+						<div class="form-group">
+							<label>用户名</label> <input type="email" class="form-control"
+								id="username" name="username" value="${user.username}"
+								placeholder="用户名">
+						</div>
+						<div class="form-group">
+							<label for="exampleInputPassword1">密码</label> <input
+								type="password" class="form-control" id="password"
+								name="password" value="${user.password}" placeholder="密码">
+						</div>
+						<div class="form-group">
+							<label>状态</label> <select id="state" name="state"
+								class="form-control">
+								<option value="1">正常</option>
+								<option value="2">冻结</option>
+								<option value="3">删除</option>
+							</select>
+						</div>
+						<div class="form-group">
+							<label>创建时间</label> <input type="text" class="form-control"
+								id="createtimestr" name="createtimestr"
+								value="${user.createtimestr}" placeholder="">
+						</div>
+					<div class="form-group">
+							<div class="file-loading">
+								<input id="myfile" name="myfile" type="file" multiple>
+							</div>
+						</div>
+					</div>
+
+					<div class="modal-footer">
+						<button type="button" onclick="return save()"
+							class="btn btn-primary">提交</button>
+						<button type="button" class="btn btn-default"  hre="${path}/test/getList"  onclick="return transfer(this)"   >取消</button>
+					</div>
+					<input type="hidden" id="enclosureIds" name="enclosureIds" value="" />
+
+				</form>
+			</div>
+			<!-- /.box -->
+		</div>
+
+	</div>
+</section>
+<script>
+ 
+      $("#myfile").fileinput({
+        showUpload: true,
+        showCaption: false,
+        overwriteInitial: false, 
+        //上传的地址
+         uploadUrl:"${path}/test/uploadFile",
+         uploadAsync:true,  
+         showCaption: true,  
+         showRemove: false,//是否显示删除按钮  
+         showPreview:true,   
+         showCancel:true,  
+         dropZoneEnabled: false,  
+         maxFileCount:5,  
+         initialPreviewShowDelete:true, 
+        previewFileIcon : "<i class='glyphicon glyphicon-king'></i>",
+        msgFilesTooMany : "选择上传的文件数量({n}) 超过允许的最大数值{m}！",
+        allowedFileTypes : [ 'image' ],//配置允许文件上传的类型
+        allowedPreviewMimeTypes : [ 'jpg', 'png', 'gif' ],//控制被预览的所有mime类型
+        language : 'zh',
+        initialPreviewAsData: true,        
+        initialPreview:<%=initialPreview%>,
+        initialPreviewConfig:<%=initialPreviewConfig%>         
+    }).on('filepredelete', function(event, key, jqXHR, data) {                                            
+        }).on("fileuploaded", function(event, data, previewId, index) {
+           $("#enclosureIds").val($("#enclosureIds").val()+data.response.id+";");
+
+    });
+
+	laydate.render({
+		elem : '#createtimestr',
+		type : 'datetime',
+	   format: 'yyyy-MM-dd HH:mm'	 
+	});
+      </script>
+
+</html>

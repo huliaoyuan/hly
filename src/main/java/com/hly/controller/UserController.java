@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.github.pagehelper.PageInfo;
-import com.hly.framwork.Pagination;
+import com.hly.common.Pagination;
 import com.hly.model.User;
 import com.hly.service.UserService;
 import com.hly.utils.StringUtils;
