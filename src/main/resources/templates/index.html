@@ -299,7 +299,7 @@ xmlns:shiro="http://www.pollix.at/thymeleaf/shiro">
                   <a href="#" class="btn btn-default btn-flat">Profile</a>
                 </div>
                 <div class="pull-right">
-                  <a href="${path}/main/loginOut" class="btn btn-default btn-flat">退出</a>
+                  <a th:href="|${#servletContext.contextPath}/logout|" class="btn btn-default btn-flat">退出</a>
                 </div>
               </li>
             </ul>

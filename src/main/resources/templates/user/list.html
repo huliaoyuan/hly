@@ -29,7 +29,7 @@ table th {
 				<div class="box-header">
 					<button type="button" class="btn btn-block btn-primary"
 						style="float: left; width: 150px;"
-						onclick="add('/user/add')"  >新增</button>
+						th:onclick="|add('${#servletContext.contextPath}/user/add')|"  >新增</button>
 					<div class="input-group input-group-sm"
 						style="width: 150px; float: right">
 						<input type="text" name="username" id="username"
