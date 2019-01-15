@@ -59,14 +59,16 @@ public class ShiroConfiguration {
         map.put("/miniProgram/**","anon");
         //springboot默认static文件夹下所有文件发布到web上，所有自建文件夹作为静态资源供shiro过滤
         map.put("/statics/**", "anon");
+        map.put("/login", "anon");
+
         //对所有用户认证
         map.put("/**","authc");
         
         shiroFilterFactoryBean.setFilterChainDefinitionMap(map);
-      //登录
+        //登录
         shiroFilterFactoryBean.setLoginUrl("/login");
         //首页
-        shiroFilterFactoryBean.setSuccessUrl("/index");
+       shiroFilterFactoryBean.setSuccessUrl("/index");
         //错误页面，认证不通过跳转
        // shiroFilterFactoryBean.setUnauthorizedUrl("/error");
         System.out.println("Shiro拦截器工厂类注入成功");
