@@ -16,7 +16,11 @@ public class User  implements Serializable{
 
     private String phone;
 
+    private Long createtime;
+
     private String classid;
+
+    private String state;
 
     private String text1;
 
@@ -90,12 +94,28 @@ public class User  implements Serializable{
         this.phone = phone == null ? null : phone.trim();
     }
 
+    public Long getCreatetime() {
+        return createtime;
+    }
+
+    public void setCreatetime(Long createtime) {
+        this.createtime = createtime;
+    }
+
     public String getClassid() {
         return classid;
     }
 
     public void setClassid(String classid) {
         this.classid = classid == null ? null : classid.trim();
+    }
+
+    public String getState() {
+        return state;
+    }
+
+    public void setState(String state) {
+        this.state = state == null ? null : state.trim();
     }
 
     public String getText1() {

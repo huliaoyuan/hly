@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.hly.common.HttpClientUtil;
-import com.hly.common.IMoocJSONResult;
+import com.hly.common.JSONResult;
 
 /**
  * 
@@ -20,7 +20,7 @@ import com.hly.common.IMoocJSONResult;
 @RequestMapping("/miniProgram")
 public class MiniProgramController {
       @PostMapping("/login")
-	  public IMoocJSONResult login(HttpServletRequest request){
+	  public JSONResult login(HttpServletRequest request){
 		   String code=request.getParameter("code");
     	   String url="https://api.weixin.qq.com/sns/jscode2session";
 		   HashMap<String ,String > map=new HashMap<>();
@@ -31,7 +31,7 @@ public class MiniProgramController {
 
 		  System.out.println(HttpClientUtil.doGet(url, map));  ;
 		   
-    	  return   IMoocJSONResult.ok();
+    	  return   JSONResult.ok();
 		  
 		    
 		  

@@ -15,21 +15,21 @@ function search(){
 	  url=url+value;
 	  $("#mainContent").load(url); 	  	
 	}
-	function pageSkip(obj) {
+function pageSkip(obj) {
 	 setValue();		 	
+	 var url=$("#listSubmitUrl").attr("action");
      var pageNo = $(obj).attr("value");
-	 url = url+"&pageNo="+pageNo+value;
+	 url = url+"?1=1&pageNo="+pageNo+value;
      $("#mainContent").load(url);
 	}	
 	
-	function add(url) {
-		$("#mainContent").load(url);
-	}
-	function edit(id,url) {
-		var url = url+"?id=" + id;
-		$("#mainContent").load(url);
-
-	}
+function add(url) {
+  $("#mainContent").load(url);
+}
+function edit(id,url) {
+  var url = url+"?id=" + id;
+  $("#mainContent").load(url);
+}
 	/* 删除 */
 function del(id,url,refurl){
 	layer.confirm('确认要删除吗？',function(index){
@@ -51,6 +51,7 @@ function del(id,url,refurl){
 }
 
 function show(id,url){
+	
       $("#showModal").modal({
                  remote:url+"?id="+id
      }); 

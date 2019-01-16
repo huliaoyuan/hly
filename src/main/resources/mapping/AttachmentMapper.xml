@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hly.mapper.AttachmentMapper">
+  <resultMap id="BaseResultMap" type="com.hly.model.Attachment">
+    <id column="id" jdbcType="VARCHAR" property="id" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="state" jdbcType="VARCHAR" property="state" />
+    <result column="path" jdbcType="VARCHAR" property="path" />
+    <result column="caseid" jdbcType="VARCHAR" property="caseid" />
+    <result column="createtime" jdbcType="BIGINT" property="createtime" />
+    <result column="type" jdbcType="VARCHAR" property="type" />
+    <result column="text1" jdbcType="VARCHAR" property="text1" />
+    <result column="text2" jdbcType="VARCHAR" property="text2" />
+    <result column="text3" jdbcType="VARCHAR" property="text3" />
+    <result column="text4" jdbcType="VARCHAR" property="text4" />
+    <result column="text5" jdbcType="VARCHAR" property="text5" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, name, state, path, caseid, createtime, type, text1, text2, text3, text4, text5
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from attachment
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from attachment
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.hly.model.Attachment">
+    insert into attachment (id, name, state, 
+      path, caseid, createtime, 
+      type, text1, text2, 
+      text3, text4, text5
+      )
+    values (#{id,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, #{state,jdbcType=VARCHAR}, 
+      #{path,jdbcType=VARCHAR}, #{caseid,jdbcType=VARCHAR}, #{createtime,jdbcType=BIGINT}, 
+      #{type,jdbcType=VARCHAR}, #{text1,jdbcType=VARCHAR}, #{text2,jdbcType=VARCHAR}, 
+      #{text3,jdbcType=VARCHAR}, #{text4,jdbcType=VARCHAR}, #{text5,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.hly.model.Attachment">
+    insert into attachment
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="state != null">
+        state,
+      </if>
+      <if test="path != null">
+        path,
+      </if>
+      <if test="caseid != null">
+        caseid,
+      </if>
+      <if test="createtime != null">
+        createtime,
+      </if>
+      <if test="type != null">
+        type,
+      </if>
+      <if test="text1 != null">
+        text1,
+      </if>
+      <if test="text2 != null">
+        text2,
+      </if>
+      <if test="text3 != null">
+        text3,
+      </if>
+      <if test="text4 != null">
+        text4,
+      </if>
+      <if test="text5 != null">
+        text5,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="state != null">
+        #{state,jdbcType=VARCHAR},
+      </if>
+      <if test="path != null">
+        #{path,jdbcType=VARCHAR},
+      </if>
+      <if test="caseid != null">
+        #{caseid,jdbcType=VARCHAR},
+      </if>
+      <if test="createtime != null">
+        #{createtime,jdbcType=BIGINT},
+      </if>
+      <if test="type != null">
+        #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="text1 != null">
+        #{text1,jdbcType=VARCHAR},
+      </if>
+      <if test="text2 != null">
+        #{text2,jdbcType=VARCHAR},
+      </if>
+      <if test="text3 != null">
+        #{text3,jdbcType=VARCHAR},
+      </if>
+      <if test="text4 != null">
+        #{text4,jdbcType=VARCHAR},
+      </if>
+      <if test="text5 != null">
+        #{text5,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.hly.model.Attachment">
+    update attachment
+    <set>
+      <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="state != null">
+        state = #{state,jdbcType=VARCHAR},
+      </if>
+      <if test="path != null">
+        path = #{path,jdbcType=VARCHAR},
+      </if>
+      <if test="caseid != null">
+        caseid = #{caseid,jdbcType=VARCHAR},
+      </if>
+      <if test="createtime != null">
+        createtime = #{createtime,jdbcType=BIGINT},
+      </if>
+      <if test="type != null">
+        type = #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="text1 != null">
+        text1 = #{text1,jdbcType=VARCHAR},
+      </if>
+      <if test="text2 != null">
+        text2 = #{text2,jdbcType=VARCHAR},
+      </if>
+      <if test="text3 != null">
+        text3 = #{text3,jdbcType=VARCHAR},
+      </if>
+      <if test="text4 != null">
+        text4 = #{text4,jdbcType=VARCHAR},
+      </if>
+      <if test="text5 != null">
+        text5 = #{text5,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.hly.model.Attachment">
+    update attachment
+    set name = #{name,jdbcType=VARCHAR},
+      state = #{state,jdbcType=VARCHAR},
+      path = #{path,jdbcType=VARCHAR},
+      caseid = #{caseid,jdbcType=VARCHAR},
+      createtime = #{createtime,jdbcType=BIGINT},
+      type = #{type,jdbcType=VARCHAR},
+      text1 = #{text1,jdbcType=VARCHAR},
+      text2 = #{text2,jdbcType=VARCHAR},
+      text3 = #{text3,jdbcType=VARCHAR},
+      text4 = #{text4,jdbcType=VARCHAR},
+      text5 = #{text5,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+   <select id="select" parameterType="com.hly.model.Attachment" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from attachment
+    where 1=1
+    <if test="caseid != null">
+       and caseid = #{caseid,jdbcType=VARCHAR}
+    </if>
+    
+    
+    
+  </select>
+  
+  
+  
+</mapper>

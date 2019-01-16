@@ -8,9 +8,6 @@ import java.util.Map;
 import javax.annotation.Resource;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.cache.annotation.CacheEvict;
-import org.springframework.cache.annotation.CachePut;
-import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
 
@@ -37,7 +34,7 @@ public class UserServiceImpl implements com.hly.service.UserService {
      * 新增
      * 
      */
-   @CachePut(value = "usercache", key = "#user.id")
+   //@CachePut(value = "usercache", key = "#user.id")
    public User addUser1(User user) {
    	   System.out.println(userMapper.insert(user));
        return user;
@@ -49,7 +46,7 @@ public class UserServiceImpl implements com.hly.service.UserService {
   * 删除
   * 
   */
-    @CacheEvict(value = "usercache", key = "#userId")
+    //@CacheEvict(value = "usercache", key = "#userId")
     public void delete(String userId) {
          userMapper.deleteByPrimaryKey(userId);
     }
@@ -58,7 +55,7 @@ public class UserServiceImpl implements com.hly.service.UserService {
      * 更新
      * 
      */
-    @CachePut(value = "usercache", key = "#user.id")
+   // @CachePut(value = "usercache", key = "#user.id")
     @Override
 	public User updateByPrimaryKeySelective(User user) {
     	userMapper.updateByPrimaryKeySelective(user);
@@ -104,7 +101,8 @@ public class UserServiceImpl implements com.hly.service.UserService {
 	/**
 	 * 查询
 	 */
-	@Cacheable(value = "usercache", key = "#id")
+	// redis缓存配置
+	//@Cacheable(value = "usercache", key = "#id")
 	@Override
 	public User selectByPrimaryKey(String id) {
 		return userMapper.selectByPrimaryKey(id);

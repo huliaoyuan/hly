@@ -29,8 +29,8 @@
 				</div>
 				<!-- /.box-header -->
 				<!-- form start -->
-				<form role="form" id="submitForm" action="/user/saveUser"
-					ret="/user/getList">
+				<form role="form" action="user/add" id="submitForm" 
+					ret="user/getList">
 					<div class="box-body">
 						<div class="form-group">
 							<label>用户名</label> <input type="email" class="form-control"
@@ -51,7 +51,7 @@
 						</div>
 						<div class="form-group">
 							<label>创建时间</label> <input type="text" class="form-control"
-								id="createTimeStr" name="createtimestr" placeholder="">
+								id="createTimeStr" name="createTimeStr" placeholder="">
 						</div>
 						 <div class="form-group">
                              <div class="file-loading">
@@ -62,12 +62,11 @@
                     </div>
 
 					<div class="box-footer">
-						<button type="button" onclick="return save()"
-							class="btn btn-success">提交</button>
-					<button type="button" class="btn btn-default"  hre="/user/getList"  onclick="return transfer(this)" >取消</button>
+					<button type="button" onclick="return save()" class="btn btn-success">提交</button>
+					<button type="button" class="btn btn-default"  hre="user/getList" onclick="transfer(this)" >取消</button>
 							
 					</div>
-                   <input type="hidden" id="enclosureIds" name="enclosureIds" value="" />
+                   <input type="hidden" id="attachmentIds" name="attachmentIds" value="" />
 
 
 				</form>
@@ -81,9 +80,29 @@
 	</div>
 </section>
 <script>
+function save() {
+	var url = $("#submitForm").attr("action");
+	var ret = $("#submitForm").attr("ret");
+	$.ajax({
+		url : url,
+		data : $("#submitForm").serializeArray(),
+		type:"post",
+		success : function(data) {
+			// $('#showModal').modal('hide');
+			layer.msg('提交成功', {
+				icon : 1,
+				time : 800
+			});
+			$("#mainContent").load(ret);
+
+		}
+
+	});
+
+}
  $("#myfile").fileinput({
         //上传的地址
-        uploadUrl:"${path}/test/uploadFile",
+        uploadUrl:"attachment/uploadFile",
          uploadAsync:true,  
          showCaption: true,  
          showUpload: true,//是否显示上传按钮  
@@ -105,7 +124,7 @@
                     console.log(data);  
         }).on("fileuploaded", function(event, data, previewId, index) {
             //alert("data:"+data+"index:"+index+"previewId"+previewId);
-            $("#enclosureIds").val($("#enclosureIds").val()+data.response.id+";");
+            $("#attachmentIds").val($("#attachmentIds").val()+data.response.id+";");
          // alert(data.response.id);
         //console.log("fileuploaded");
         //var ref = $(this).attr("data-ref");

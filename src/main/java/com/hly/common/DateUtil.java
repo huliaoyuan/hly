@@ -347,6 +347,26 @@ public class DateUtil {
 				return str;
 			}
 		}	
+		
+		//获取时间的格式信息
+		public static String getDateFormatMsg(String date){
+			if(date != null && !"".equals(date)){		
+				date = date.trim();
+				String reg1 = "[0-9]{4}[-]{1}[0-9]{1,2}[-]{1}[0-9]{1,2}";
+				if(date.matches(reg1)){
+					return "yyyy-MM-dd";
+				}
+				String reg2 = "[0-9]{4}[-]{1}[0-9]{1,2}[-]{1}[0-9]{1,2}[\\s]+[0-9]{1,2}[:]{1}[0-9]{1,2}";
+				if(date.matches(reg2)){
+					return "yyyy-MM-dd HH:mm";
+				}
+				String reg3 = "[0-9]{4}[-]{1}[0-9]{1,2}[-]{1}[0-9]{1,2}[\\s]+[0-9]{1,2}[:]{1}[0-9]{1,2}[:]{1}[0-9]{1,2}";
+				if(date.matches(reg3)){
+					return "yyyy-MM-dd HH:mm:ss";
+				}		
+			}
+			return null;		
+		}
 
 	public static void main(String[] args) throws Exception {
 		String start = "2014-08-1 8:8:12";
