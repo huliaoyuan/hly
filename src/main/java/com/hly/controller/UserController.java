@@ -120,10 +120,10 @@ public class UserController {
        user.setCreatetime(createtime);
     	userService.updateByPrimaryKeySelective(user);
     	
-    	String attchmentIds=request.getParameter("attchmentIds");
-    	if(!StringUtil.isNullOrEmpty(attchmentIds))
+    	String attachmentIds=request.getParameter("attachmentIds");
+    	if(!StringUtil.isNullOrEmpty(attachmentIds))
     	{
-    		handleAttachment(attchmentIds,user.getId());
+    		handleAttachment(attachmentIds,user.getId());
     	}
 
         return JSONResult.ok();
