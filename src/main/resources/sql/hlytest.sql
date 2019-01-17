@@ -10,10 +10,50 @@ Target Server Type    : MYSQL
 Target Server Version : 50556
 File Encoding         : 65001
 
-Date: 2018-12-21 17:20:18
+Date: 2019-01-17 15:55:14
 */
 
 SET FOREIGN_KEY_CHECKS=0;
+
+-- ----------------------------
+-- Table structure for attachment
+-- ----------------------------
+DROP TABLE IF EXISTS `attachment`;
+CREATE TABLE `attachment` (
+  `id` varchar(50) NOT NULL,
+  `name` varchar(255) DEFAULT NULL COMMENT '名称',
+  `state` varchar(10) DEFAULT NULL COMMENT '状态',
+  `path` varchar(1000) DEFAULT NULL COMMENT '地址',
+  `caseid` varchar(50) DEFAULT NULL,
+  `createtime` bigint(50) DEFAULT NULL COMMENT '创建时间',
+  `type` varchar(10) DEFAULT NULL,
+  `text1` varchar(255) DEFAULT NULL,
+  `text2` varchar(255) DEFAULT NULL,
+  `text3` varchar(255) DEFAULT NULL,
+  `text4` varchar(255) DEFAULT NULL,
+  `text5` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of attachment
+-- ----------------------------
+INSERT INTO `attachment` VALUES ('23380838d1e6481390bc2e19663aa567', null, null, '2019/01/16/1547630957417.jpg', null, '1547630957419', null, null, null, null, null, null);
+INSERT INTO `attachment` VALUES ('2b1031c87a3f44f793c83b84ec71acb7', null, null, '2019/01/16/1547627475537.png', null, '1547627475541', null, null, null, null, null, null);
+INSERT INTO `attachment` VALUES ('3c5902929463433ab815453eb12720ad', null, null, '2019/01/16/1547627907446.png', '84e0583d2e9244889eead3f64ed0c78f', '1547627907449', null, null, null, null, null, null);
+INSERT INTO `attachment` VALUES ('42187b1abc7245259e565cb5695f3668', null, null, '2019/01/16/1547627907417.png', '84e0583d2e9244889eead3f64ed0c78f', '1547627907418', null, null, null, null, null, null);
+INSERT INTO `attachment` VALUES ('6c48cbc395cc4b848dc8084b65fe9725', null, null, null, '11114f407a8d43689223701f71a78f94', null, null, null, null, null, null, null);
+INSERT INTO `attachment` VALUES ('8206e85d14434ee9a8ce2fb068656cd2', null, null, '2019/01/16/1547630704693.png', '9a7e096f66f14156bf15cc33812e20a9', '1547630704717', null, null, null, null, null, null);
+INSERT INTO `attachment` VALUES ('a075536303dd467d870ce63529a55ab8', null, null, null, '11114f407a8d43689223701f71a78f94', null, null, null, null, null, null, null);
+INSERT INTO `attachment` VALUES ('aa8d50f34f2c4e83826b957a6d1c7c8e', null, null, '2019/01/16/1547632716616.png', null, '1547632716617', null, null, null, null, null, null);
+INSERT INTO `attachment` VALUES ('aff72073a2f94536b78d2770465fd78e', null, null, '2019/01/16/1547630704691.png', '9a7e096f66f14156bf15cc33812e20a9', '1547630704717', null, null, null, null, null, null);
+INSERT INTO `attachment` VALUES ('b66b038452fc47b88cdf4723ed318196', null, null, '2019/01/16/1547627907419.png', '84e0583d2e9244889eead3f64ed0c78f', '1547627907447', null, null, null, null, null, null);
+INSERT INTO `attachment` VALUES ('c20de4ba33284995939f801b8049e0f2', null, null, null, '11114f407a8d43689223701f71a78f94', null, null, null, null, null, null, null);
+INSERT INTO `attachment` VALUES ('d7575310ea2145ef90e74c6c3ba5df73', null, null, '2019/01/16/1547630815027.png', null, '1547630815027', null, null, null, null, null, null);
+INSERT INTO `attachment` VALUES ('e1429430610f482d8aec16e54a035ed1', null, null, '2019/01/16/1547632686352.png', '04c7c0d007124a85bf4a5cf1b47fe3d5', '1547632686356', null, null, null, null, null, null);
+INSERT INTO `attachment` VALUES ('e19afe974f9147cb8898e9161938ee40', null, null, '2019/01/16/1547632686352.png', '04c7c0d007124a85bf4a5cf1b47fe3d5', '1547632686355', null, null, null, null, null, null);
+INSERT INTO `attachment` VALUES ('ee69990960ca4a9598388a2c5a52e928', null, null, '2019/01/16/1547627475154.png', null, '1547627475155', null, null, null, null, null, null);
+INSERT INTO `attachment` VALUES ('f7635b12cfc442d6b4972f6bc0ad9d15', null, null, '2019/01/16/1547627474518.png', null, '1547627474540', null, null, null, null, null, null);
 
 -- ----------------------------
 -- Table structure for class
@@ -100,7 +140,9 @@ CREATE TABLE `user` (
   `username` varchar(255) DEFAULT NULL,
   `password` varchar(255) DEFAULT NULL,
   `phone` varchar(255) DEFAULT NULL,
+  `createtime` bigint(30) DEFAULT NULL,
   `classid` varchar(50) DEFAULT NULL,
+  `state` varchar(10) DEFAULT NULL COMMENT '状态',
   `text1` varchar(255) DEFAULT NULL,
   `text2` varchar(255) DEFAULT NULL,
   `text3` varchar(255) DEFAULT NULL,
@@ -127,28 +169,8 @@ CREATE TABLE `user` (
 -- ----------------------------
 -- Records of user
 -- ----------------------------
-INSERT INTO `user` VALUES ('1c8798f464df4cdba31504db95ce4e9d', '盖伦啊啊啊1', '123', '18668437101', '11', null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null);
-INSERT INTO `user` VALUES ('2', '盖伦', '123', '234', '11', null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null);
-INSERT INTO `user` VALUES ('294a2957d53d48d4a677dc975297048d', null, '123', '234', '11', null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null);
-INSERT INTO `user` VALUES ('29913213551f47ac8849068ca6891e5e', null, '123', '5', '11', null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null);
-INSERT INTO `user` VALUES ('3', '盖伦', '123', '4', '11', null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null);
-INSERT INTO `user` VALUES ('3081a691b95f4a72a42361b27448704c', '盖伦啊啊啊1', '80082088201', '567', '11', null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null);
-INSERT INTO `user` VALUES ('4', '盖伦', '123', '678', '11', null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null);
-INSERT INTO `user` VALUES ('5', '123', '123', '678', '11', null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null);
-INSERT INTO `user` VALUES ('5335da102c3740a2849ea0f8d9d5b62b', null, '123', 'yu', '11', null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null);
-INSERT INTO `user` VALUES ('54a40868c50047ca8595425df751c5f3', null, '123', '6', '11', null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null);
-INSERT INTO `user` VALUES ('6', '342', '234', '45', '11', null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null);
-INSERT INTO `user` VALUES ('7', '2334', '23432', '234', '11', null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null);
-INSERT INTO `user` VALUES ('70160576ed964ac5a97ba68432b3f8d8', null, '123', '23', '11', null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null);
-INSERT INTO `user` VALUES ('8', '盖伦', '123', '123', '11', null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null);
-INSERT INTO `user` VALUES ('8597d8a9bacd4c5aa122cfaeffb16801', '盖伦啊啊啊1', '80082088201', '12', '11', null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null);
-INSERT INTO `user` VALUES ('881809904d904839b250f65f938fa8d2', null, '123', '34', '11', null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null);
-INSERT INTO `user` VALUES ('a51d068e7ff14c8dae3149e0fde2023a', null, '123', '234', '11', null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null);
-INSERT INTO `user` VALUES ('a82e28f92b804996b8397412e93402e4', null, '123', '234', '11', null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null);
-INSERT INTO `user` VALUES ('abb55e9f2a6c4ba7910b81c3f12c6055', null, '123', '234', '11', null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null);
-INSERT INTO `user` VALUES ('b4a25a6a53f14ccfa691af464817db2b', null, '123', '234', '11', null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null);
-INSERT INTO `user` VALUES ('b5e84a6f473a4423a73378ece46381f8', null, '123', '3444', '11', null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null);
-INSERT INTO `user` VALUES ('d956ce029f7e4160a09c0f836fc45de8', null, '123', '23', '11', null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null);
+INSERT INTO `user` VALUES ('04c7c0d007124a85bf4a5cf1b47fe3d5', '1866843712345', '123', null, '1547633580000', null, '1', 'ewqr', 'wr', null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null);
+INSERT INTO `user` VALUES ('1c8798f464df4cdba31504db95ce4e9d', '盖伦啊啊啊1', '123', '18668437101', '1547568000000', '11', '2', '2343', null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null);
 
 -- ----------------------------
 -- Table structure for user_role
