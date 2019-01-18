@@ -9,16 +9,16 @@ import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Component;
 
 /**
- * @Description: 使用redisTemplate的操作实现类 
+ * @Description: 使用stringRedisTemplate的操作实现类 
  */
 @Component
 public class RedisOperator {
 	
 //	@Autowired
-//    private RedisTemplate<String, Object> redisTemplate;
+//    private stringRedisTemplate<String, Object> stringRedisTemplate;
 	
 	@Autowired
-	private StringRedisTemplate redisTemplate;
+	private StringRedisTemplate stringRedisTemplate;
 	
 	// Key（键），简单的key-value操作
 
@@ -29,7 +29,7 @@ public class RedisOperator {
 	 * @return
 	 */
 	public long ttl(String key) {
-		return redisTemplate.getExpire(key);
+		return stringRedisTemplate.getExpire(key);
 	}
 	
 	/**
@@ -39,7 +39,7 @@ public class RedisOperator {
 	 * @return
 	 */
 	public void expire(String key, long timeout) {
-		redisTemplate.expire(key, timeout, TimeUnit.SECONDS);
+		stringRedisTemplate.expire(key, timeout, TimeUnit.SECONDS);
 	}
 	
 	/**
@@ -49,14 +49,14 @@ public class RedisOperator {
 	 * @return
 	 */
 	public long incr(String key, long delta) {
-		return redisTemplate.opsForValue().increment(key, delta);
+		return stringRedisTemplate.opsForValue().increment(key, delta);
 	}
 
 	/**
 	 * 实现命令：KEYS pattern，查找所有符合给定模式 pattern的 key
 	 */
 	public Set<String> keys(String pattern) {
-		return redisTemplate.keys(pattern);
+		return stringRedisTemplate.keys(pattern);
 	}
 
 	/**
@@ -65,7 +65,7 @@ public class RedisOperator {
 	 * @param key
 	 */
 	public void del(String key) {
-		redisTemplate.delete(key);
+		stringRedisTemplate.delete(key);
 	}
 
 	// String（字符串）
@@ -77,7 +77,7 @@ public class RedisOperator {
 	 * @param value
 	 */
 	public void set(String key, String value) {
-		redisTemplate.opsForValue().set(key, value);
+		stringRedisTemplate.opsForValue().set(key, value);
 	}
 
 	/**
@@ -89,7 +89,7 @@ public class RedisOperator {
 	 *            （以秒为单位）
 	 */
 	public void set(String key, String value, long timeout) {
-		redisTemplate.opsForValue().set(key, value, timeout, TimeUnit.SECONDS);
+		stringRedisTemplate.opsForValue().set(key, value, timeout, TimeUnit.SECONDS);
 	}
 
 	/**
@@ -99,7 +99,7 @@ public class RedisOperator {
 	 * @return value
 	 */
 	public String get(String key) {
-		return (String)redisTemplate.opsForValue().get(key);
+		return (String)stringRedisTemplate.opsForValue().get(key);
 	}
 
 	// Hash（哈希表）
@@ -112,7 +112,7 @@ public class RedisOperator {
 	 * @param value
 	 */
 	public void hset(String key, String field, Object value) {
-		redisTemplate.opsForHash().put(key, field, value);
+		stringRedisTemplate.opsForHash().put(key, field, value);
 	}
 
 	/**
@@ -123,7 +123,7 @@ public class RedisOperator {
 	 * @return
 	 */
 	public String hget(String key, String field) {
-		return (String) redisTemplate.opsForHash().get(key, field);
+		return (String) stringRedisTemplate.opsForHash().get(key, field);
 	}
 
 	/**
@@ -133,7 +133,7 @@ public class RedisOperator {
 	 * @param fields
 	 */
 	public void hdel(String key, Object... fields) {
-		redisTemplate.opsForHash().delete(key, fields);
+		stringRedisTemplate.opsForHash().delete(key, fields);
 	}
 
 	/**
@@ -143,7 +143,7 @@ public class RedisOperator {
 	 * @return
 	 */
 	public Map<Object, Object> hgetall(String key) {
-		return redisTemplate.opsForHash().entries(key);
+		return stringRedisTemplate.opsForHash().entries(key);
 	}
 
 	// List（列表）
@@ -156,7 +156,7 @@ public class RedisOperator {
 	 * @return 执行 LPUSH命令后，列表的长度。
 	 */
 	public long lpush(String key, String value) {
-		return redisTemplate.opsForList().leftPush(key, value);
+		return stringRedisTemplate.opsForList().leftPush(key, value);
 	}
 
 	/**
@@ -166,7 +166,7 @@ public class RedisOperator {
 	 * @return 列表key的头元素。
 	 */
 	public String lpop(String key) {
-		return (String)redisTemplate.opsForList().leftPop(key);
+		return (String)stringRedisTemplate.opsForList().leftPop(key);
 	}
 
 	/**
@@ -177,7 +177,7 @@ public class RedisOperator {
 	 * @return 执行 LPUSH命令后，列表的长度。
 	 */
 	public long rpush(String key, String value) {
-		return redisTemplate.opsForList().rightPush(key, value);
+		return stringRedisTemplate.opsForList().rightPush(key, value);
 	}
 
 }

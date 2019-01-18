@@ -22,6 +22,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.hly.common.MD5;
 import com.hly.model.Permission;
 import com.hly.model.Role;
 import com.hly.model.User;
@@ -43,6 +44,8 @@ public class LoginController {
     	String username=request.getParameter("username");
     	String password=request.getParameter("password");
     	System.out.println(username + "---" + password);
+    	
+    	password=MD5.md5(password,"huge");
 
 		// 获得当前Subject
 		Subject currentUser = SecurityUtils.getSubject();

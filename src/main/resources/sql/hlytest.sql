@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50556
 File Encoding         : 65001
 
-Date: 2019-01-17 15:55:14
+Date: 2019-01-18 11:56:43
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -38,21 +38,38 @@ CREATE TABLE `attachment` (
 -- ----------------------------
 -- Records of attachment
 -- ----------------------------
+INSERT INTO `attachment` VALUES ('0239bdc163d041769232cbdf05c7ec0e', null, null, '2019/01/17/1547715442072.png', 'c494020943cb4745bdb8c5e87c28460b', '1547715442074', null, null, null, null, null, null);
+INSERT INTO `attachment` VALUES ('0d387d8913a24866b228228d03f39425', null, null, '2019/01/17/1547713055918.png', null, '1547713055923', null, null, null, null, null, null);
+INSERT INTO `attachment` VALUES ('125daa164e004275ac647e55552e99a8', null, null, '2019/01/17/1547715915452.png', 'ea7427db2f744f8e8b96c8994fac0201', '1547715915454', null, null, null, null, null, null);
+INSERT INTO `attachment` VALUES ('151ff832b0c84512b6c8370ca908f1e9', null, null, '2019/01/17/1547712978027.jpg', null, '1547712978032', null, null, null, null, null, null);
+INSERT INTO `attachment` VALUES ('1963da341f8d43e79d8f02f0ac60f41d', null, null, '2019/01/17/1547715932703.png', 'ea7427db2f744f8e8b96c8994fac0201', '1547715932704', null, null, null, null, null, null);
 INSERT INTO `attachment` VALUES ('23380838d1e6481390bc2e19663aa567', null, null, '2019/01/16/1547630957417.jpg', null, '1547630957419', null, null, null, null, null, null);
+INSERT INTO `attachment` VALUES ('236c0b2eba754491abe6099b4680f2bf', null, null, '2019/01/17/1547716042198.png', '12c60cba592c4a86b6f9b924e033cc1e', '1547716042199', null, null, null, null, null, null);
 INSERT INTO `attachment` VALUES ('2b1031c87a3f44f793c83b84ec71acb7', null, null, '2019/01/16/1547627475537.png', null, '1547627475541', null, null, null, null, null, null);
+INSERT INTO `attachment` VALUES ('30b17046beba424c8dc4c2ab0d19900f', null, null, '2019/01/17/1547713122642.png', 'd9ffbf9598fd43cfbc8d0752ee363ec0', '1547713122645', null, null, null, null, null, null);
 INSERT INTO `attachment` VALUES ('3c5902929463433ab815453eb12720ad', null, null, '2019/01/16/1547627907446.png', '84e0583d2e9244889eead3f64ed0c78f', '1547627907449', null, null, null, null, null, null);
 INSERT INTO `attachment` VALUES ('42187b1abc7245259e565cb5695f3668', null, null, '2019/01/16/1547627907417.png', '84e0583d2e9244889eead3f64ed0c78f', '1547627907418', null, null, null, null, null, null);
+INSERT INTO `attachment` VALUES ('4ae63bdce8bd4f22bb64b2d9bfa64574', null, null, '2019/01/17/1547713055918.png', null, '1547713055923', null, null, null, null, null, null);
+INSERT INTO `attachment` VALUES ('52cba2c8a83047afadf964c559138f6e', null, null, '2019/01/17/1547713122656.png', 'd9ffbf9598fd43cfbc8d0752ee363ec0', '1547713122658', null, null, null, null, null, null);
 INSERT INTO `attachment` VALUES ('6c48cbc395cc4b848dc8084b65fe9725', null, null, null, '11114f407a8d43689223701f71a78f94', null, null, null, null, null, null, null);
+INSERT INTO `attachment` VALUES ('7012c1ab916a4fa9b9bbf9eea40340c6', null, null, '2019/01/17/1547712978034.png', null, '1547712978039', null, null, null, null, null, null);
+INSERT INTO `attachment` VALUES ('72007a07486a44fcb4badfc66792b56f', null, null, '2019/01/17/1547716042210.png', '12c60cba592c4a86b6f9b924e033cc1e', '1547716042212', null, null, null, null, null, null);
+INSERT INTO `attachment` VALUES ('78e4da1a79a4455a9e2104f3bfef7059', null, null, '2019/01/17/1547716004809.png', '12c60cba592c4a86b6f9b924e033cc1e', '1547716004812', null, null, null, null, null, null);
 INSERT INTO `attachment` VALUES ('8206e85d14434ee9a8ce2fb068656cd2', null, null, '2019/01/16/1547630704693.png', '9a7e096f66f14156bf15cc33812e20a9', '1547630704717', null, null, null, null, null, null);
 INSERT INTO `attachment` VALUES ('a075536303dd467d870ce63529a55ab8', null, null, null, '11114f407a8d43689223701f71a78f94', null, null, null, null, null, null, null);
+INSERT INTO `attachment` VALUES ('a1343e370a5141a798f475045aea06e5', null, null, '2019/01/17/1547715894142.png', '0a2123dfd95c414c9cf7dfc6650f812a', '1547715894145', null, null, null, null, null, null);
 INSERT INTO `attachment` VALUES ('aa8d50f34f2c4e83826b957a6d1c7c8e', null, null, '2019/01/16/1547632716616.png', null, '1547632716617', null, null, null, null, null, null);
 INSERT INTO `attachment` VALUES ('aff72073a2f94536b78d2770465fd78e', null, null, '2019/01/16/1547630704691.png', '9a7e096f66f14156bf15cc33812e20a9', '1547630704717', null, null, null, null, null, null);
 INSERT INTO `attachment` VALUES ('b66b038452fc47b88cdf4723ed318196', null, null, '2019/01/16/1547627907419.png', '84e0583d2e9244889eead3f64ed0c78f', '1547627907447', null, null, null, null, null, null);
+INSERT INTO `attachment` VALUES ('c079e25b3ee84a159fadbdceb962ef8d', null, null, '2019/01/17/1547715894159.png', '0a2123dfd95c414c9cf7dfc6650f812a', '1547715894162', null, null, null, null, null, null);
 INSERT INTO `attachment` VALUES ('c20de4ba33284995939f801b8049e0f2', null, null, null, '11114f407a8d43689223701f71a78f94', null, null, null, null, null, null, null);
+INSERT INTO `attachment` VALUES ('d2a008c2388c433aa182a58439cf43ab', null, null, '2019/01/17/1547712978026.jpg', null, '1547712978029', null, null, null, null, null, null);
+INSERT INTO `attachment` VALUES ('d5db2b8e57984a319c36e1dc23824bae', null, null, '2019/01/17/1547715932730.png', 'ea7427db2f744f8e8b96c8994fac0201', '1547715932732', null, null, null, null, null, null);
 INSERT INTO `attachment` VALUES ('d7575310ea2145ef90e74c6c3ba5df73', null, null, '2019/01/16/1547630815027.png', null, '1547630815027', null, null, null, null, null, null);
+INSERT INTO `attachment` VALUES ('d8da31af94c9447c8573be901a27361c', null, null, '2019/01/17/1547713055918.png', null, '1547713055923', null, null, null, null, null, null);
 INSERT INTO `attachment` VALUES ('e1429430610f482d8aec16e54a035ed1', null, null, '2019/01/16/1547632686352.png', '04c7c0d007124a85bf4a5cf1b47fe3d5', '1547632686356', null, null, null, null, null, null);
-INSERT INTO `attachment` VALUES ('e19afe974f9147cb8898e9161938ee40', null, null, '2019/01/16/1547632686352.png', '04c7c0d007124a85bf4a5cf1b47fe3d5', '1547632686355', null, null, null, null, null, null);
 INSERT INTO `attachment` VALUES ('ee69990960ca4a9598388a2c5a52e928', null, null, '2019/01/16/1547627475154.png', null, '1547627475155', null, null, null, null, null, null);
+INSERT INTO `attachment` VALUES ('ef33cc0f9cb045708a97cea8c855a8ac', null, null, '2019/01/17/1547715605575.png', null, '1547715605577', null, null, null, null, null, null);
 INSERT INTO `attachment` VALUES ('f7635b12cfc442d6b4972f6bc0ad9d15', null, null, '2019/01/16/1547627474518.png', null, '1547627474540', null, null, null, null, null, null);
 
 -- ----------------------------
@@ -169,8 +186,8 @@ CREATE TABLE `user` (
 -- ----------------------------
 -- Records of user
 -- ----------------------------
-INSERT INTO `user` VALUES ('04c7c0d007124a85bf4a5cf1b47fe3d5', '1866843712345', '123', null, '1547633580000', null, '1', 'ewqr', 'wr', null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null);
-INSERT INTO `user` VALUES ('1c8798f464df4cdba31504db95ce4e9d', '盖伦啊啊啊1', '123', '18668437101', '1547568000000', '11', '2', '2343', null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null);
+INSERT INTO `user` VALUES ('1c8798f464df4cdba31504db95ce4e9d', '盖伦啊啊啊1', '48d3239a34ec0e5a376795eeb175d8ba', '18668437101', '1547568000000', '11', '2', '密码是123456', null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null);
+INSERT INTO `user` VALUES ('7240fa690321435082113536e86b7acb', '天天向上', '48d3239a34ec0e5a376795eeb175d8ba', null, '1547783640000', null, '1', '密码是123456', null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null);
 
 -- ----------------------------
 -- Table structure for user_role

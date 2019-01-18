@@ -23,6 +23,7 @@ import com.alibaba.fastjson.JSONObject;
 import com.github.pagehelper.PageInfo;
 import com.hly.common.DateUtil;
 import com.hly.common.JSONResult;
+import com.hly.common.MD5;
 import com.hly.common.Pagination;
 import com.hly.common.StringUtil;
 import com.hly.model.Attachment;
@@ -56,11 +57,14 @@ public class UserController {
     
     @ResponseBody
     @PostMapping(value = "/add")
-    public JSONResult addUser(User user,HttpServletRequest request){
+    public JSONResult addUser(User user,HttpServletRequest request) throws Exception{
        String createTimeStr=request.getParameter("createTimeStr");	
        Long createtime=DateUtil.toLong(createTimeStr, DateUtil.getDateFormatMsg(createTimeStr));
     	user.setId(StringUtils.UUID());
     	user.setCreatetime(createtime);
+    	user.setPassword(MD5.md5(user.getPassword(),"huge"));
+    	
+    	
     	userService.addUser(user);
     	String attachmentIds=request.getParameter("attachmentIds");
     	if(!StringUtil.isNullOrEmpty(attachmentIds))

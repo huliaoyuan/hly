@@ -94,6 +94,7 @@
 			<artifactId>druid</artifactId>
 			<version>1.1.6</version>
 		</dependency>
+		<!-- redis支持 -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-redis</artifactId>
@@ -104,6 +105,7 @@
 			<artifactId>httpclient</artifactId>
 		</dependency>
 		<dependency>
+			<!--shiro -->
 			<groupId>org.apache.shiro</groupId>
 			<artifactId>shiro-core</artifactId>
 			<version>${shiro.version}</version>
@@ -124,13 +126,24 @@
 			<version>${shiro.version}</version>
 		</dependency>
 		<!--shiro end -->
+		<!--thymeleaf shiro支持 -->
 		<dependency>
 			<groupId>com.github.theborakompanioni</groupId>
 			<artifactId>thymeleaf-extras-shiro</artifactId>
 			<version>2.0.0</version>
 		</dependency>
-		<!-- <dependency> <groupId>org.springframework.boot</groupId> <artifactId>spring-boot-devtools</artifactId> 
-			<optional>true</optional> </dependency> -->
+		<!--热部署 -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-devtools</artifactId>
+			<optional>true</optional>
+		</dependency>
+
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-lang3</artifactId>
+			<version>3.3.2</version>
+		</dependency>
 		<dependency>
 			<groupId>net.sourceforge.htmlunit</groupId>
 			<artifactId>htmlunit</artifactId>
