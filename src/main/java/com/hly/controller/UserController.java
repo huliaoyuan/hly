@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.alibaba.fastjson.JSONArray;
@@ -149,10 +150,61 @@ public class UserController {
         return 1;
     }
     
+    /**
+     * 
+     * 
+     * @return
+     */
+    @ResponseBody
+    @RequestMapping(value = "/redisInsert")
+    public User redisInsert(User user,HttpServletRequest request){
+    	String username=request.getParameter("username");
+    	String phone=request.getParameter("phone");
+    	user.setId(StringUtils.UUID());
+    	user.setUsername(username);
+    	user.setPhone(phone);
+    	
+    	System.out.println(username);
+        return userService.redisInsert(user);
+    }
+    /**
+     * 
+     * 
+     * @return
+     */
+    @ResponseBody
+    @RequestMapping(value = "/redisDelete")
+    public boolean redisDelete(@RequestParam String id){
+    	  	
+        return   userService.redisDelete(id);
+    }
+    /**
+     * 
+     * 
+     * @return
+     */
+    @ResponseBody
+    @RequestMapping(value = "/redisUpdate")
+    public User redisUpdate(User user,HttpServletRequest request){
+    	String username=request.getParameter("username");
+    	String phone=request.getParameter("phone");
+    	user.setUsername(username);
+    	user.setPhone(phone);
+        return userService.redisUpdate(user);
+    }
     
-    
-    
-    
+    /**
+     * 
+     * 
+     * @return
+     */
+    @ResponseBody
+    @RequestMapping(value = "/redisSelect")
+    public List<User> redisSelect(User user){
+    	
+        return userService.redisSelect(user);
+    }
+           
     
     @ResponseBody
     @RequestMapping("/delete")

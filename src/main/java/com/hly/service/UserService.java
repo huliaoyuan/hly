@@ -33,6 +33,15 @@ public interface UserService {
 	PageInfo<Map<String,Object>> selectPage1(int pageNum, int pageSize);
     
 	public PageInfo<User> findAllUser(int pageNum, int pageSize,User user);
+
+	User redisInsert(User user);
+
+	User redisUpdate(User user);
+
+	boolean redisDelete(String id);
+
+	List<User> redisSelect(User user);
+	
 	
 	
 }

@@ -60,6 +60,7 @@ public class ShiroConfiguration {
         //springboot默认static文件夹下所有文件发布到web上，所有自建文件夹作为静态资源供shiro过滤
         map.put("/statics/**", "anon");
         map.put("/login", "anon");
+        map.put("/user/**", "anon");
 
         //对所有用户认证
         map.put("/**","authc");

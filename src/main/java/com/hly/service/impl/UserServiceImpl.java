@@ -1,6 +1,7 @@
 package com.hly.service.impl;
 
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -10,6 +11,7 @@ import javax.annotation.Resource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
@@ -50,6 +52,8 @@ public class UserServiceImpl implements com.hly.service.UserService {
     public void delete(String userId) {
          userMapper.deleteByPrimaryKey(userId);
     }
+    
+    
     
     /**
      * 更新
@@ -168,6 +172,62 @@ public class UserServiceImpl implements com.hly.service.UserService {
     	 }
 		 return  appsPageInfo;
 		
+	}
+
+
+	@Override
+	@Transactional
+	public User redisInsert(User user) {
+		 int i= userMapper.insert(user);
+		 if(i>0){
+			 redisUtil.set("user_"+user.getId(), user);
+		 }
+		 
+		return user;
+	}
+
+
+	@Override
+	@Transactional
+	public User redisUpdate(User user) {
+		
+		int i=userMapper.updateByPrimaryKeySelective(user);
+		if(i>0){
+			 redisUtil.set("user_"+user.getId(), user);
+		 }
+		
+		return user;
+	}
+
+
+	@Override
+	@Transactional
+	public boolean redisDelete(String id) {
+		boolean flag=false;
+		// TODO Auto-generated method stub
+		int i=userMapper.deleteByPrimaryKey(id);
+		if(i>0){
+             flag=true;
+			 redisUtil.del( "user_"+id);
+		 }
+			
+		return flag;
+	}
+
+
+	@Override
+	public List<User> redisSelect(User user) {
+		List<User> userList=new ArrayList<>();
+	    Object obj=redisUtil.get("user_"+user.getId());
+		if(obj!=null){
+		   	user=(User) obj;
+		}else{
+			user=userMapper.selectByPrimaryKey(user.getId());
+			redisUtil.set("user_"+user.getId(), user);
+
+		}
+		userList.add(user);
+		return userList;
 	}
 
 	

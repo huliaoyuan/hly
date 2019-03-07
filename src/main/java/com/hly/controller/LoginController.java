@@ -31,8 +31,8 @@ import com.hly.service.LoginService;
 @Controller
 public class LoginController {
 	//用于用户查询
-	  @Autowired
-	  private LoginService loginService;
+	@Autowired
+	private LoginService loginService;
     @GetMapping(value = "/login")
     public String login(){
         return "login";
